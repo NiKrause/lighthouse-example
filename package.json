@@ -1,0 +1,22 @@
+{
+  "name": "vibestream",
+  "version": "0.0.1",
+  "description": "A Vibestream scratchpad",
+  "keywords": [
+    "filecoin",
+    "lighthouse"
+  ],
+  "license": "MIT",
+  "author": "Nico Krause",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@lighthouse-web3/sdk": "^0.4.0",
+    "axios": "^1.10.0",
+    "dotenv": "^16.5.0"
+  }
+}
