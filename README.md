@@ -1,4 +1,4 @@
-This is a Lighthouse (Filecoin) example pad https://docs.lighthouse.storage/
+This is a simple Lighthouse (Filecoin) example https://docs.lighthouse.storage/
 we want to collect code example and workflows for uploading and downloading files to and from Filecoin via lighthouse sdk.
 
 # Usage 

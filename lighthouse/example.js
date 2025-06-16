@@ -15,6 +15,33 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+
+/**
+ * Main function to demonstrate Lighthouse SDK usage
+ * @returns {Promise<void>}
+ */
+export async function main() {
+    try {
+        const inputPath = path.join(__dirname, 'input.txt');
+        const uploadResponse = await lighthouse.upload(inputPath, process.env.LIGHTHOUSE_API_KEY);
+
+        console.log('Upload successful:', uploadResponse);
+        const cid = uploadResponse.data.Hash;
+
+        // Check if file is on Filecoin using SDK
+        const isOnFilecoin = await checkFileOnFilecoin(cid);
+        console.log(`File ${isOnFilecoin ? 'is' : 'is not'} stored on Filecoin`);
+
+        // Download and display file contents
+        if (isOnFilecoin) {
+            await downloadAndDisplayFile(cid, inputPath);
+        }
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+} 
+
 /**
  * Checks if a file is stored on Filecoin network using Lighthouse SDK
  * @param {string} cid - The CID of the file to check
@@ -72,29 +99,3 @@ async function downloadAndDisplayFile(cid, originalFilePath) {
         console.error('Failed to download or display the file:', error);
     }
 }
-
-/**
- * Main function to demonstrate Lighthouse SDK usage
- * @returns {Promise<void>}
- */
-export async function main() {
-    try {
-        const inputPath = path.join(__dirname, 'input.txt');
-        const uploadResponse = await lighthouse.upload(inputPath, process.env.LIGHTHOUSE_API_KEY);
-
-        console.log('Upload successful:', uploadResponse);
-        const cid = uploadResponse.data.Hash;
-
-        // Check if file is on Filecoin using SDK
-        const isOnFilecoin = await checkFileOnFilecoin(cid);
-        console.log(`File ${isOnFilecoin ? 'is' : 'is not'} stored on Filecoin`);
-
-        // Download and display file contents
-        if (isOnFilecoin) {
-            await downloadAndDisplayFile(cid, inputPath);
-        }
-
-    } catch (error) {
-        console.error('Error:', error);
-    }
-} 
