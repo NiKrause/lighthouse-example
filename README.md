@@ -1,5 +1,5 @@
 This is a simple Lighthouse (Filecoin) example https://docs.lighthouse.storage/
-we want to collect code example and workflows for uploading and downloading files to and from Filecoin via lighthouse sdk.
+for uploading and downloading files to and from Filecoin via lighthouse sdk.
 
 # Usage 
 0. ```pnpm install```
